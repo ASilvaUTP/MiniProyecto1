@@ -1,0 +1,111 @@
+/* styles.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #4fc3f7;
+    color: white;
+    text-align: center;
+    padding: 1.5em;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+footer {
+    background-color: #333;
+    color: #eee;
+    text-align: center;
+    padding: 1em;
+    margin-top: 3em;
+    font-size: 0.9em;
+}
+
+.menu {
+    text-align: center;
+    margin: 2em auto;
+}
+
+.grid-menu {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.2em;
+    width: 80%;
+    margin: 2em auto;
+}
+
+.boton-problema {
+    display: inline-block;
+    background-color: #4fc3f7;
+    color: white;
+    padding: 1em;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.boton-problema:hover {
+    background-color: #0288d1;
+}
+
+/* Fondos distintos */
+.fondo-principal { background: linear-gradient(to right, #b3e5fc, #e1f5fe); }
+.fondo-problema1 { background: linear-gradient(to right, #ffccbc, #ffe0b2); }
+.fondo-problema2 { background: linear-gradient(to right, #c8e6c9, #a5d6a7); }
+.fondo-problema3 { background: linear-gradient(to right, #f8bbd0, #f48fb1); }
+.fondo-problema4 { background: linear-gradient(to right, #d1c4e9, #b39ddb); }
+.fondo-problema5 { background: linear-gradient(to right, #fff9c4, #fff59d); }
+.fondo-problema6 { background: linear-gradient(to right, #c5cae9, #9fa8da); }
+.fondo-problema7 { background: linear-gradient(to right, #ffecb3, #ffe082); }
+.fondo-problema8 { background: linear-gradient(to right, #b2dfdb, #80cbc4); }
+.fondo-problema9 { background: linear-gradient(to right, #dcedc8, #c5e1a5); }
+.fondo-problema10 { background: linear-gradient(to right, #f0f4c3, #e6ee9c); }
+
+section {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    padding: 2em;
+    width: 80%;
+    margin: 2em auto;
+}
+
+img.ilustracion {
+    display: block;
+    margin: 1.5em auto;
+    max-width: 350px;
+    border-radius: 12px;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main, section {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+}
+
+.mensaje-error {
+    color: #d32f2f;
+    font-weight: bold;
+    background-color: #ffcdd2;
+    border-radius: 8px;
+    padding: 0.6em 1em;
+    display: inline-block;
+}
+
+.fondo-problema3 { background: linear-gradient(to right, #f8bbd0, #f48fb1); }
+
+.fondo-problema4 { background: linear-gradient(to right, #d1c4e9, #b39ddb); }
