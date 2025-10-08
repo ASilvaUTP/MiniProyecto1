@@ -27,16 +27,85 @@ footer {
 .menu {
     text-align: center;
     margin: 2em auto;
+    width: 100%;
 }
 
+/* --- Distribución del menú principal CENTRADO --- */
 .grid-menu {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.2em;
-    width: 80%;
-    margin: 2em auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Esto centra todo */
+    gap: 2em;
+    width: 90%;
+    max-width: 1200px;
+    margin: 3em auto;
 }
 
+/* --- Tarjeta visual de cada problema - TAMAÑO MÁS RAZONABLE --- */
+.tarjeta-problema {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffffcc;
+    border-radius: 20px;
+    padding: 1.5em;
+    width: 280px; /* Ancho fijo */
+    aspect-ratio: 1 / 1;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1em;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.25s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.tarjeta-problema:hover {
+    transform: scale(1.05);
+    background-color: #e0f7fa;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+}
+
+/* --- Imagen de cada problema MEJORADA --- */
+.icono-problema {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    margin-bottom: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-problema:hover .icono-problema {
+    transform: scale(1.1);
+}
+
+/* --- Texto del título del problema --- */
+.tarjeta-problema span {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #0077b6;
+}
+
+
+
+/* --- Responsividad MEJORADA --- */
+@media (max-width: 1000px) {
+    .grid-menu {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-menu {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+    }
+    
+    .tarjeta-problema {
+        max-width: 100%;
+    }
+}
+
+/* --- Botones de los formularios dentro de cada problema --- */
 .boton-problema {
     display: inline-block;
     background-color: #4fc3f7;
@@ -51,7 +120,7 @@ footer {
     background-color: #0288d1;
 }
 
-/* Fondos distintos */
+/* --- Fondos distintos para cada página --- */
 .fondo-principal { background: linear-gradient(to right, #b3e5fc, #e1f5fe); }
 .fondo-problema1 { background: linear-gradient(to right, #ffccbc, #ffe0b2); }
 .fondo-problema2 { background: linear-gradient(to right, #c8e6c9, #a5d6a7); }
@@ -80,6 +149,7 @@ img.ilustracion {
     border-radius: 12px;
 }
 
+/* --- Footer fijo al fondo --- */
 html, body {
     height: 100%;
 }
@@ -87,6 +157,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 main, section {
@@ -97,6 +168,7 @@ footer {
     margin-top: auto;
 }
 
+/* --- Mensaje de error --- */
 .mensaje-error {
     color: #d32f2f;
     font-weight: bold;
@@ -106,6 +178,9 @@ footer {
     display: inline-block;
 }
 
-.fondo-problema3 { background: linear-gradient(to right, #f8bbd0, #f48fb1); }
-
-.fondo-problema4 { background: linear-gradient(to right, #d1c4e9, #b39ddb); }
+/* --- CLASE EXTRA PARA CENTRAR CONTENIDO --- */
+.centrado-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
