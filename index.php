@@ -19,8 +19,29 @@
         <h2>Seleccione un problema para resolver:</h2>
         <div class="grid-menu">
             <?php
+            // Arreglo con imágenes por problema
+            $imagenes = [
+                "problema1" => "Problema1.png",
+                "problema2" => "Problema2.png",
+                "problema3" => "Problema3.png",
+                "problema4" => "Problema4.png",
+                "problema5" => "Problema5.png",
+                "problema6" => "Problema6.png",
+                "problema7" => "Problema7.png",
+                "problema8" => "Problema8.png",
+                "problema9" => "Problema9.png",
+                "problema10" => "Problema10.png"
+            ];
+
             for ($i = 1; $i <= 10; $i++) {
-                echo "<a href='problemas/problema$i.php' class='boton-problema'>Problema #$i</a>";
+                $ruta = "problemas/problema$i.php";
+                $imagen = "assets/imgs/" . ($imagenes["problema$i"] ?? "default.png");
+
+                echo "
+                <a href='$ruta' class='tarjeta-problema'>
+                    <img src='$imagen' alt='Problema $i' class='icono-problema'>
+                    <span>Problema #$i</span>
+                </a>";
             }
             ?>
         </div>
