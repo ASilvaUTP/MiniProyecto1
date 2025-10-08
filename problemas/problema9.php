@@ -12,29 +12,38 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $resultado = $problema->ejecutar($numero);
 }
 
-$problema->mostrarEncabezado("fondo-problema9", "potencias.png");
+$problema->mostrarEncabezado("fondo-problema9", "");
 ?>
 
-<form method="POST">
-    <label>Ingrese un número entre 1 y 9:</label><br><br>
-    <input type="number" name="numero" min="1" max="9" required>
-    <br><br>
-    <input type="submit" value="Calcular potencias" class="boton-problema">
-</form>
+<div class="contenedor-problema">
+    <form method="POST" class="form-problema">
+        <div class="form-group">
+            <label class="form-label">Ingrese un número entre 1 y 9:</label>
+            <input type="number" name="numero" min="1" max="9" required class="form-input" placeholder="Ejemplo: 2">
+        </div>
+        <input type="submit" value="Calcular potencias" class="boton-problema">
+    </form>
 
-<?php if (!empty($resultado)): ?>
-    <?php if (isset($resultado['error'])): ?>
-        <p class="mensaje-error"><?= $resultado['error'] ?></p>
-    <?php else: ?>
-        <h3>Las 15 primeras potencias de <?= $resultado['numero'] ?> son:</h3>
-        <ul>
-            <?php foreach ($resultado['potencias'] as $linea): ?>
-                <li><?= $linea ?></li>
-            <?php endforeach; ?>
-        </ul>
+    <?php if (!empty($resultado)): ?>
+        <?php if (isset($resultado['error'])): ?>
+            <div class="mensaje-error">
+                <i class="error-icon">⚠️</i>
+                <?= htmlspecialchars($resultado['error']) ?>
+            </div>
+        <?php else: ?>
+            <div class="resultado-potencias">
+                <h3>Las 15 primeras potencias de <?= $resultado['numero'] ?> son:</h3>
+                <div class="potencias-grid">
+                    <?php foreach ($resultado['potencias'] as $linea): ?>
+                        <div class="potencia-card">
+                            <span class="potencia-texto"><?= $linea ?></span>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
-<?php endif; ?>
+</div>
 
 <?php
 $problema->mostrarCierre();
-?>

@@ -184,3 +184,1011 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+/* === NUEVO DISEÑO UNIFICADO PARA PROBLEMAS 6–10 === */
+
+.contenedor-problema {
+    background-color: #ffffffd9;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 900px;
+    margin: 3em auto;
+    padding: 2em 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contenedor-problema h2 {
+    color: #0077b6;
+    margin-bottom: 0.3em;
+}
+
+.contenedor-problema p {
+    font-size: 1.05em;
+    color: #555;
+    margin-bottom: 1.5em;
+    line-height: 1.5em;
+}
+
+/* --- Formularios uniformes --- */
+.contenedor-problema form {
+    margin-bottom: 2em;
+    width: 100%;
+}
+
+.contenedor-problema label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.6em;
+}
+
+.contenedor-problema input[type="number"],
+.contenedor-problema input[type="text"],
+.contenedor-problema select {
+    width: 80%;
+    max-width: 400px;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 1em;
+}
+
+.contenedor-problema input[type="submit"] {
+    background-color: #4fc3f7;
+    color: white;
+    border: none;
+    padding: 0.9em 1.8em;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+.contenedor-problema input[type="submit"]:hover {
+    background-color: #0288d1;
+    transform: scale(1.05);
+}
+
+/* --- Resultados y tablas --- */
+.resultado {
+    background-color: #f9f9f9;
+    padding: 1.5em;
+    border-radius: 12px;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 700px;
+    text-align: left;
+    margin: 1em auto;
+}
+
+.resultado h3 {
+    color: #00796b;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.resultado ul {
+    list-style: none;
+    padding: 0;
+}
+
+.resultado li {
+    background-color: #e3f2fd;
+    margin: 0.4em 0;
+    padding: 0.6em 1em;
+    border-radius: 8px;
+}
+
+/* --- Tablas limpias --- */
+.resultado table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+.resultado th, .resultado td {
+    padding: 0.7em;
+    border: 1px solid #ccc;
+}
+
+.resultado th {
+    background-color: #b2ebf2;
+    color: #004d40;
+}
+
+/* --- Imagen alusiva --- */
+.imagen-problema {
+    width: 250px;
+    max-width: 100%;
+    border-radius: 15px;
+    margin: 1.5em 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* --- Responsive --- */
+@media (max-width: 800px) {
+    .contenedor-problema {
+        width: 95%;
+        padding: 1.5em;
+    }
+
+    .contenedor-problema input[type="number"],
+    .contenedor-problema input[type="text"],
+    .contenedor-problema select {
+        width: 100%;
+    }
+}
+
+/* Estilos para el problema 6 */
+.resultado-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: space-between;
+}
+
+.tabla-resultados {
+    flex: 1;
+    min-width: 300px;
+}
+
+.grafica-contenedor {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.grafica-contenedor h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.tabla-resultados table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-resultados th {
+    background: #3498db;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.tabla-resultados td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.tabla-resultados tfoot th {
+    background: #2c3e50;
+    text-align: right;
+}
+
+.tabla-resultados tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.tabla-resultados tr:hover {
+    background-color: #e8f4fc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .resultado-contenedor {
+        flex-direction: column;
+    }
+    
+    .tabla-resultados,
+    .grafica-contenedor {
+        min-width: 100%;
+    }
+}
+
+/* Estilos para el problema 7 - Calculadora Estadística */
+.estadistica-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.form-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.notas-container {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+    margin-bottom: 1.5rem;
+}
+
+.notas-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.notas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.nota-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nota-label {
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+.nota-input {
+    padding: 10px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.nota-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.calcular-btn {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    border: none;
+}
+
+.calcular-btn:hover {
+    background: linear-gradient(135deg, #229954, #27ae60);
+    transform: translateY(-2px);
+}
+
+.boton-problema.secundario {
+    background: #95a5a6;
+    border: none;
+}
+
+.boton-problema.secundario:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+/* Resultados estadísticos */
+.resultados-estadisticos {
+    margin-top: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resultados-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.estadisticas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.estadistica-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.estadistica-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.estadistica-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.estadistica-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.estadistica-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.estadistica-valor {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.estadistica-valor.minima {
+    color: #e74c3c;
+}
+
+.estadistica-valor.maxima {
+    color: #27ae60;
+}
+
+/* Notas chips */
+.notas-lista {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #ecf0f1;
+}
+
+.notas-lista h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.notas-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.nota-chip {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Mensajes de error mejorados */
+.mensaje-error {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.error-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.mensaje-error ul {
+    text-align: left;
+    margin: 1rem 0 0 0;
+    padding-left: 1.5rem;
+}
+
+.mensaje-error li {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .notas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .estadisticas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .estadistica-card {
+        padding: 1rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .boton-problema {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .notas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .notas-container {
+        padding: 1rem;
+    }
+    }
+
+  /* Estilos para el problema 8 - Estaciones del Año */
+.estacion-form {
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    text-align: center;
+}
+
+.fecha-input {
+    font-size: 1.1rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.estacion-btn {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    border: none;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+}
+
+.estacion-btn:hover {
+    background: linear-gradient(135deg, #d35400, #e67e22);
+    transform: translateY(-2px);
+}
+
+/* Resultado de estación */
+.resultado-estacion {
+    margin-top: 2rem;
+}
+
+.tarjeta-estacion {
+    display: flex;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.imagen-estacion {
+    flex: 1;
+    min-height: 300px;
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagen-estacion img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Estilo para cuando se usa la imagen por defecto */
+.imagen-estacion img[src*="estacion-default.png"] {
+    object-fit: contain;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.info-estacion {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.estacion-icono {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.estacion-titulo {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.estacion-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.dato-fecha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.dato-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.dato-valor {
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.estacion-descripcion {
+    text-align: center;
+    color: #6c757d;
+    line-height: 1.6;
+    font-style: italic;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #e67e22;
+}
+
+/* Colores específicos para cada estación */
+.estacion-titulo[data-estacion="Primavera"] {
+    color: #e84393;
+}
+
+.estacion-titulo[data-estacion="Verano"] {
+    color: #e17055;
+}
+
+.estacion-titulo[data-estacion="Otoño"] {
+    color: #d63031;
+}
+
+.estacion-titulo[data-estacion="Invierno"] {
+    color: #0984e3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tarjeta-estacion {
+        flex-direction: column;
+    }
+    
+    .imagen-estacion {
+        min-height: 200px;
+    }
+    
+    .info-estacion {
+        padding: 1.5rem;
+    }
+    
+    .estacion-titulo {
+        font-size: 1.5rem;
+    }
+    
+    .dato-fecha {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .estacion-form {
+        max-width: 100%;
+    }
+    
+    .form-input {
+        max-width: 100%;
+    }
+}
+
+/* Estilos para el problema 9 - Potencias */
+.resultado-potencias {
+    margin-top: 2rem;
+}
+
+.resultado-potencias h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.potencias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.potencia-card {
+    background: linear-gradient(135deg, #8710f7, #764ba2);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.potencia-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.potencia-texto {
+    font-size: 1.1rem;
+    font-family: 'Courier New', monospace;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .potencias-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .potencia-card {
+        padding: 1rem;
+    }
+    
+    .potencia-texto {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .potencias-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+/* Estilos para el problema 10 - Ventas */
+.ventas-form {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.seccion-datos {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.seccion-titulo {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.seccion-descripcion {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Grid para vendedores y productos */
+.vendedores-grid,
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-label {
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+/* Tabla de ventas */
+.tabla-ventas-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+}
+
+.tabla-ventas {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.tabla-ventas th,
+.tabla-ventas td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+}
+
+.th-producto {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: 600;
+}
+
+.th-vendedor {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+    font-weight: 600;
+}
+
+.td-producto {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+}
+
+.input-venta {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.input-venta:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+/* Resultados */
+.resultado-ventas {
+    margin-top: 2rem;
+}
+
+.resultado-titulo {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.tabla-resultados-container {
+    overflow-x: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.tabla-resultados {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.tabla-resultados th,
+.tabla-resultados td {
+    padding: 14px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+}
+
+.th-total {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    color: white;
+    font-weight: 600;
+}
+
+.td-venta-resultado {
+    background: #f8f9fa;
+    font-weight: 500;
+    color: #495057;
+}
+
+.td-total-producto {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.td-total-vendedor {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.td-total-general {
+    background: linear-gradient(135deg, #84fab0, #8fd3f4);
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.tabla-resultados tfoot tr {
+    background: #2c3e50;
+    color: white;
+}
+
+/* Resumen card */
+.resumen-ventas {
+    display: flex;
+    justify-content: center;
+}
+
+.resumen-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.resumen-icono {
+    font-size: 2rem;
+}
+
+.resumen-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.resumen-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.resumen-valor {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Botón calcular */
+.calcular-btn {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    border: none;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+}
+
+.calcular-btn:hover {
+    background: linear-gradient(135deg, #229954, #27ae60);
+    transform: translateY(-2px);
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .vendedores-grid,
+    .productos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .seccion-datos {
+        padding: 1rem;
+    }
+    
+    .tabla-ventas th,
+    .tabla-ventas td,
+    .tabla-resultados th,
+    .tabla-resultados td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+    
+    .resumen-card {
+        padding: 1rem 1.5rem;
+    }
+    
+    .resumen-valor {
+        font-size: 1.3rem;
+    }
+}
+
+/* Botón volver */
+.volver-btn {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    border: none;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    margin-top: 1rem;
+}
+
+.volver-btn:hover {
+    background: linear-gradient(135deg, #d35400, #e67e22);
+    transform: translateY(-2px);
+}
+
+/* Asegurar que el botón esté centrado */
+.form-actions {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+@media (max-width: 480px) {
+    .input-venta {
+        padding: 6px;
+        font-size: 0.8rem;
+    }
+}

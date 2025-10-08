@@ -19,7 +19,6 @@ class ProblemaBase {
         <section>
             <h2>{$this->titulo}</h2>
             <p>{$this->descripcion}</p>
-            <img src='../assets/imgs/{$imagenRuta}' alt='Imagen alusiva' class='ilustracion'>
         ";
     }
 
