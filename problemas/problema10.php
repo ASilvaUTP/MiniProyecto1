@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-$problema->mostrarEncabezado("fondo-problema10", "");
+$problema->mostrarFondo("fondo-problema10");
 ?>
 
 <div class="contenedor-problema">

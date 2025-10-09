@@ -12,51 +12,96 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $resultado = $problema->ejecutar($edades);
 }
 
-$problema->mostrarEncabezado("fondo-problema5", "edades.png"); // ajusta ruta de imagen si usas otra carpeta
+$problema->mostrarFondo("fondo-problema5");
 ?>
 
-<form method="post" class="form-problema">
-    <fieldset>
-        <legend>Ingrese 5 edades</legend>
-        <?php for ($i = 1; $i <= 5; $i++): ?>
-            <label>
-                Edad <?= $i ?>:
-                <input type="number" name="edad[]" min="0" max="120" required>
-            </label>
-        <?php endfor; ?>
-    </fieldset>
-    <input type="submit" value="Clasificar" class="boton-problema">
-</form>
+<div class="contenedor-problema">
+    <form method="post" class="form-problema">
+        <div class="form-group">
+            <h3 class="form-titulo">Ingrese 5 edades</h3>
+            <div class="edades-grid">
+                <?php for ($i = 1; $i <= 5; $i++): ?>
+                    <div class="edad-input-group">
+                        <label class="edad-label">Edad <?= $i ?></label>
+                        <input type="number" name="edad[]" min="0" max="120" required 
+                               class="edad-input" placeholder="0-120">
+                    </div>
+                <?php endfor; ?>
+            </div>
+        </div>
+        <input type="submit" value="Clasificar Edades" class="boton-problema">
+    </form>
 
-<?php if (!empty($resultado)): ?>
-    <?php if (!empty($resultado["error"])): ?>
-        <p class="mensaje-error"><?= htmlspecialchars($resultado["error"]) ?></p>
-    <?php else: ?>
-        <h3>Resultados</h3>
-        <table class="tabla">
-            <thead>
-            <tr><th>#</th><th>Edad</th><th>Categoría</th></tr>
-            </thead>
-            <tbody>
-            <?php foreach ($resultado["detalle"] as $fila): ?>
-                <tr>
-                    <td><?= $fila["n"] ?></td>
-                    <td><?= $fila["edad"] ?></td>
-                    <td><?= $fila["categoria"] ?></td>
-                </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
+    <?php if (!empty($resultado)): ?>
+        <?php if (!empty($resultado["error"])): ?>
+            <div class="mensaje-error">
+                <i class="error-icon">⚠️</i>
+                <?= htmlspecialchars($resultado["error"]) ?>
+            </div>
+        <?php else: ?>
+            <div class="resultados-clasificacion">
+                <h3>Resultados de Clasificación</h3>
+                
+                <div class="tabla-container">
+                    <table class="tabla-edades">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Edad</th>
+                                <th>Categoría</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($resultado["detalle"] as $fila): ?>
+                                <tr>
+                                    <td class="td-numero"><?= $fila["n"] ?></td>
+                                    <td class="td-edad"><?= $fila["edad"] ?> años</td>
+                                    <td class="td-categoria categoria-<?= str_replace(' ', '_', strtolower($fila["categoria"])) ?>">
+                                        <?= $fila["categoria"] ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
 
-        <h4>Estadísticas</h4>
-        <ul>
-            <li>Niños: <strong><?= $resultado["conteo"]["nino"] ?></strong></li>
-            <li>Adolescentes: <strong><?= $resultado["conteo"]["adolescente"] ?></strong></li>
-            <li>Adultos: <strong><?= $resultado["conteo"]["adulto"] ?></strong></li>
-            <li>Adultos mayores: <strong><?= $resultado["conteo"]["adulto_mayor"] ?></strong></li>
-        </ul>
+                <div class="estadisticas">
+                    <h4>Resumen Estadístico</h4>
+                    <div class="estadisticas-grid">
+                        <div class="estadistica-item nino">
+                            <span class="estadistica-icon">👶</span>
+                            <div class="estadistica-info">
+                                <span class="estadistica-label">Niños</span>
+                                <span class="estadistica-valor"><?= $resultado["conteo"]["nino"] ?></span>
+                            </div>
+                        </div>
+                        <div class="estadistica-item adolescente">
+                            <span class="estadistica-icon">🧑‍🎓</span>
+                            <div class="estadistica-info">
+                                <span class="estadistica-label">Adolescentes</span>
+                                <span class="estadistica-valor"><?= $resultado["conteo"]["adolescente"] ?></span>
+                            </div>
+                        </div>
+                        <div class="estadistica-item adulto">
+                            <span class="estadistica-icon">👨‍💼</span>
+                            <div class="estadistica-info">
+                                <span class="estadistica-label">Adultos</span>
+                                <span class="estadistica-valor"><?= $resultado["conteo"]["adulto"] ?></span>
+                            </div>
+                        </div>
+                        <div class="estadistica-item adulto_mayor">
+                            <span class="estadistica-icon">👵</span>
+                            <div class="estadistica-info">
+                                <span class="estadistica-label">Adultos Mayores</span>
+                                <span class="estadistica-valor"><?= $resultado["conteo"]["adulto_mayor"] ?></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
-<?php endif; ?>
+</div>
 
 <?php
 $problema->mostrarCierre();

@@ -11,22 +11,39 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $resultado = $problema->ejecutar();
 }
 
-$problema->mostrarEncabezado("fondo-problema4", "paresimpares.png");
+$problema->mostrarFondo("fondo-problema4");
 ?>
 
-<form method="POST">
-    <p>Presione el botón para calcular las sumas entre 1 y 200.</p>
-    <input type="submit" value="Calcular sumas" class="boton-problema">
-</form>
+<div class="contenedor-problema">
+    <form method="POST" class="form-problema">
+        <div class="form-group">
+            <p class="descripcion">Presione el botón para calcular las sumas entre 1 y 200.</p>
+        </div>
+        <input type="submit" value="Calcular Sumas" class="boton-problema">
+    </form>
 
-<?php if (!empty($resultado)): ?>
-    <h3>Resultados:</h3>
-    <ul>
-        <li><strong>Suma de pares:</strong> <?= $resultado['pares'] ?></li>
-        <li><strong>Suma de impares:</strong> <?= $resultado['impares'] ?></li>
-    </ul>
-<?php endif; ?>
+    <?php if (!empty($resultado)): ?>
+        <div class="resultado-sumas">
+            <h3>Resultados:</h3>
+            <div class="sumas-grid">
+                <div class="suma-card par">
+                    <div class="suma-icono">🔵</div>
+                    <div class="suma-info">
+                        <span class="suma-label">Suma de Pares</span>
+                        <span class="suma-valor"><?= number_format($resultado['pares']) ?></span>
+                    </div>
+                </div>
+                <div class="suma-card impar">
+                    <div class="suma-icono">🔴</div>
+                    <div class="suma-info">
+                        <span class="suma-label">Suma de Impares</span>
+                        <span class="suma-valor"><?= number_format($resultado['impares']) ?></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
 
 <?php
 $problema->mostrarCierre();
-?>

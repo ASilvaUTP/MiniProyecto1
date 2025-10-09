@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $resultado = $problema->ejecutar($fecha);
 }
 
-$problema->mostrarEncabezado("fondo-problema8", "");
+$problema->mostrarFondo("fondo-problema8");
 ?>
 
 <div class="contenedor-problema">

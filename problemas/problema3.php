@@ -12,29 +12,39 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $resultado = $problema->ejecutar($n);
 }
 
-$problema->mostrarEncabezado("fondo-problema3", "multiplo4.png");
+$problema->mostrarFondo("fondo-problema3");
 ?>
 
-<form method="POST">
-    <label>Ingrese un número entero positivo (N):</label><br><br>
-    <input type="number" name="numero" min="1" step="1" required>
-    <br><br>
-    <input type="submit" value="Mostrar múltiplos" class="boton-problema">
-</form>
+<div class="contenedor-problema">
+    <form method="POST" class="form-problema">
+        <div class="form-group">
+            <label class="form-label">Ingrese un número entero positivo (N):</label>
+            <input type="number" name="numero" min="1" step="1" required 
+                   class="form-input" placeholder="Ejemplo: 5">
+        </div>
+        <input type="submit" value="Mostrar múltiplos" class="boton-problema">
+    </form>
 
-<?php if (!empty($resultado)): ?>
-    <?php if (isset($resultado['error'])): ?>
-        <p class="mensaje-error"><?= $resultado['error'] ?></p>
-    <?php else: ?>
-        <h3>Los primeros <?= htmlspecialchars($_POST['numero']) ?> múltiplos de 4 son:</h3>
-        <ul>
-            <?php foreach ($resultado['multiplicaciones'] as $linea): ?>
-                <li><?= $linea ?></li>
-            <?php endforeach; ?>
-        </ul>
+    <?php if (!empty($resultado)): ?>
+        <?php if (isset($resultado['error'])): ?>
+            <div class="mensaje-error">
+                <i class="error-icon">⚠️</i>
+                <?= htmlspecialchars($resultado['error']) ?>
+            </div>
+        <?php else: ?>
+            <div class="resultado-multiplos">
+                <h3>Los primeros <?= htmlspecialchars($_POST['numero']) ?> múltiplos de 4 son:</h3>
+                <div class="multiplos-grid">
+                    <?php foreach ($resultado['multiplicaciones'] as $linea): ?>
+                        <div class="multiplo-card">
+                            <?= $linea ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
-<?php endif; ?>
+</div>
 
 <?php
 $problema->mostrarCierre();
-?>

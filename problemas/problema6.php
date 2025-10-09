@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 // Mostrar encabezado (ya incluye el título y descripción)
-$problema->mostrarEncabezado("fondo-problema6", "");
+$problema->mostrarFondo("fondo-problema6");
 ?>
 
 <!-- Incluir Chart.js -->

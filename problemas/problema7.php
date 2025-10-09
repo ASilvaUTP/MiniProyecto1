@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $resultado = $problema->ejecutar($_POST);
 }
 
-$problema->mostrarEncabezado("fondo-problema7", "");
+$problema->mostrarFondo("fondo-problema7");
 ?>
 
 <div class="contenedor-problema">
