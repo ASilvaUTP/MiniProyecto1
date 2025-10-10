@@ -18,6 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 $problema->mostrarFondo("fondo-problema5");
 ?>
 
+<!-- Incluir Chart.js para las gráficas de barras -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="contenedor-problema">
     <!-- Formulario: ingresar 5 edades -->
     <form method="post" class="form-problema">
@@ -72,41 +75,81 @@ $problema->mostrarFondo("fondo-problema5");
                     </table>
                 </div>
 
-                <div class="estadisticas">
-                    <h4>Resumen Estadístico</h4>
-                    <div class="estadisticas-grid">
-                        <!-- Mostrar conteos por categoría (niño, adolescente, adulto, adulto mayor) -->
-                        <div class="estadistica-item nino">
-                            <span class="estadistica-icon">👶</span>
-                            <div class="estadistica-info">
-                                <span class="estadistica-label">Niños</span>
-                                <span class="estadistica-valor"><?= $resultado["conteo"]["nino"] ?></span>
-                            </div>
-                        </div>
-                        <div class="estadistica-item adolescente">
-                            <span class="estadistica-icon">🧑‍🎓</span>
-                            <div class="estadistica-info">
-                                <span class="estadistica-label">Adolescentes</span>
-                                <span class="estadistica-valor"><?= $resultado["conteo"]["adolescente"] ?></span>
-                            </div>
-                        </div>
-                        <div class="estadistica-item adulto">
-                            <span class="estadistica-icon">👨‍💼</span>
-                            <div class="estadistica-info">
-                                <span class="estadistica-label">Adultos</span>
-                                <span class="estadistica-valor"><?= $resultado["conteo"]["adulto"] ?></span>
-                            </div>
-                        </div>
-                        <div class="estadistica-item adulto_mayor">
-                            <span class="estadistica-icon">👵</span>
-                            <div class="estadistica-info">
-                                <span class="estadistica-label">Adultos Mayores</span>
-                                <span class="estadistica-valor"><?= $resultado["conteo"]["adulto_mayor"] ?></span>
-                            </div>
-                        </div>
+                <!-- Sección de gráficas de barras para mostrar la distribución -->
+                <div class="graficas-container">
+                    <h4>Distribución por Categorías</h4>
+                    <div class="grafica-barras">
+                        <canvas id="graficaEdades" width="400" height="200"></canvas>
                     </div>
                 </div>
             </div>
+
+                        <!-- Script para generar la gráfica de barras horizontal con Chart.js -->
+            <script>
+                // Datos para la gráfica de barras obtenidos desde PHP
+                const datosEdades = {
+                    categorias: ['Niños', 'Adolescentes', 'Adultos', 'Adultos Mayores'],
+                    conteos: [
+                        <?= $resultado["conteo"]["nino"] ?>,
+                        <?= $resultado["conteo"]["adolescente"] ?>,
+                        <?= $resultado["conteo"]["adulto"] ?>,
+                        <?= $resultado["conteo"]["adulto_mayor"] ?>
+                    ],
+                    colores: [
+                        '#28a745', // Verde para niños
+                        '#007bff', // Azul para adolescentes
+                        '#ffc107', // Amarillo para adultos
+                        '#dc3545'  // Rojo para adultos mayores
+                    ]
+                };
+
+                // Crear gráfica de barras horizontal
+                const ctx = document.getElementById('graficaEdades').getContext('2d');
+                const graficaEdades = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: datosEdades.categorias,
+                        datasets: [{
+                            label: 'Cantidad de Personas',
+                            data: datosEdades.conteos,
+                            backgroundColor: datosEdades.colores,
+                            borderColor: datosEdades.colores,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y', // Esto hace las barras horizontales
+                        responsive: true,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Cantidad de Personas'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Categorías de Edad'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Distribución de Edades por Categoría'
+                            }
+                        }
+                    }
+                });
+            </script>
         <?php endif; ?>
     <?php endif; ?>
 </div>
@@ -114,3 +157,4 @@ $problema->mostrarFondo("fondo-problema5");
 <?php
 // Cerrar plantilla (enlace de vuelta y footer)
 $problema->mostrarCierre();
+?>
