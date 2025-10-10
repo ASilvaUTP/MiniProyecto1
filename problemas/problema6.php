@@ -1,6 +1,8 @@
 <?php
+// Cargar la clase que calcula la distribución del presupuesto
 require_once("../clases/Problema6.php");
 
+// Crear la instancia del problema (título y descripción para la plantilla)
 $problema = new Problema6(
     "Problema #6: Presupuesto Hospitalario",
     "Calcular la distribución del presupuesto anual entre Ginecología, Traumatología y Pediatría según porcentajes establecidos."
@@ -8,19 +10,21 @@ $problema = new Problema6(
 
 $resultado = [];
 
+// Si se envía el formulario, leer presupuesto y ejecutar la lógica
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $presupuesto = floatval($_POST['presupuesto'] ?? 0);
     $resultado = $problema->ejecutar($presupuesto);
 }
 
-// Mostrar encabezado (ya incluye el título y descripción)
+// Mostrar cabecera (título/descripcion y abrir body)
 $problema->mostrarFondo("fondo-problema6");
 ?>
 
-<!-- Incluir Chart.js -->
+<!-- Incluir Chart.js para mostrar la gráfica de distribución -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="contenedor-problema">
+    <!-- Formulario: ingresar presupuesto total -->
     <form method="POST" class="form-problema">
         <label>Ingrese el presupuesto anual total (USD):</label>
         <input type="number" name="presupuesto" step="0.01" min="0" placeholder="Ejemplo: 100000" required>
@@ -30,8 +34,10 @@ $problema->mostrarFondo("fondo-problema6");
 
     <?php if (!empty($resultado)): ?>
         <?php if (isset($resultado['error'])): ?>
+            <!-- Mostrar mensaje de error si lo hay -->
             <p class="mensaje-error"><?= htmlspecialchars($resultado['error']) ?></p>
         <?php else: ?>
+            <!-- Mostrar tabla con la distribución y una gráfica tipo pastel -->
             <div class="resultado-contenedor">
                 <div class="tabla-resultados">
                     <h3>Distribución del presupuesto:</h3>
@@ -68,7 +74,7 @@ $problema->mostrarFondo("fondo-problema6");
             </div>
 
             <script>
-                // Datos para la gráfica desde PHP
+                // Preparar datos desde PHP para Chart.js
                 const datosPresupuesto = {
                     areas: [<?php foreach ($resultado['areas'] as $area): ?>'<?= $area['area'] ?>',<?php endforeach; ?>],
                     montos: [<?php foreach ($resultado['areas'] as $area): ?><?= $area['monto'] ?>,<?php endforeach; ?>],
@@ -76,7 +82,7 @@ $problema->mostrarFondo("fondo-problema6");
                     colores: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40']
                 };
 
-                // Crear gráfica de pastel
+                // Crear gráfica tipo pastel con leyenda y tooltip personalizado
                 const ctx = document.getElementById('graficaPresupuesto').getContext('2d');
                 const graficaPresupuesto = new Chart(ctx, {
                     type: 'pie',
@@ -92,15 +98,7 @@ $problema->mostrarFondo("fondo-problema6");
                     options: {
                         responsive: true,
                         plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    font: {
-                                        size: 12
-                                    },
-                                    padding: 20
-                                }
-                            },
+                            legend: { position: 'bottom' },
                             tooltip: {
                                 callbacks: {
                                     label: function(context) {
@@ -113,10 +111,7 @@ $problema->mostrarFondo("fondo-problema6");
                             },
                             title: {
                                 display: true,
-                                text: 'Distribución del Presupuesto Hospitalario',
-                                font: {
-                                    size: 16
-                                }
+                                text: 'Distribución del Presupuesto Hospitalario'
                             }
                         }
                     }
@@ -127,5 +122,6 @@ $problema->mostrarFondo("fondo-problema6");
 </div>
 
 <?php
+// Cerrar plantilla (enlace de vuelta y footer)
 $problema->mostrarCierre();
 ?>

@@ -1,4 +1,5 @@
 <?php
+// Cargar la clase que clasifica edades y crear la instancia con título/descripcion
 require_once("../clases/Problema5.php");
 $problema = new Problema5(
     "Problema #5: Clasificación de edades",
@@ -7,15 +8,18 @@ $problema = new Problema5(
 
 $resultado = [];
 
+// Si se envía el formulario por POST, obtener las edades y ejecutar la lógica
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $edades = $_POST['edad'] ?? [];
     $resultado = $problema->ejecutar($edades);
 }
 
+// Mostrar la cabecera HTML del problema (título y descripción)
 $problema->mostrarFondo("fondo-problema5");
 ?>
 
 <div class="contenedor-problema">
+    <!-- Formulario: ingresar 5 edades -->
     <form method="post" class="form-problema">
         <div class="form-group">
             <h3 class="form-titulo">Ingrese 5 edades</h3>
@@ -34,11 +38,13 @@ $problema->mostrarFondo("fondo-problema5");
 
     <?php if (!empty($resultado)): ?>
         <?php if (!empty($resultado["error"])): ?>
+            <!-- Mostrar mensaje de error si la validación falló -->
             <div class="mensaje-error">
                 <i class="error-icon">⚠️</i>
                 <?= htmlspecialchars($resultado["error"]) ?>
             </div>
         <?php else: ?>
+            <!-- Mostrar tabla con detalle por cada edad y un resumen con conteos -->
             <div class="resultados-clasificacion">
                 <h3>Resultados de Clasificación</h3>
                 
@@ -56,6 +62,7 @@ $problema->mostrarFondo("fondo-problema5");
                                 <tr>
                                     <td class="td-numero"><?= $fila["n"] ?></td>
                                     <td class="td-edad"><?= $fila["edad"] ?> años</td>
+                                    <!-- Clase CSS basada en la categoría para estilos -->
                                     <td class="td-categoria categoria-<?= str_replace(' ', '_', strtolower($fila["categoria"])) ?>">
                                         <?= $fila["categoria"] ?>
                                     </td>
@@ -68,6 +75,7 @@ $problema->mostrarFondo("fondo-problema5");
                 <div class="estadisticas">
                     <h4>Resumen Estadístico</h4>
                     <div class="estadisticas-grid">
+                        <!-- Mostrar conteos por categoría (niño, adolescente, adulto, adulto mayor) -->
                         <div class="estadistica-item nino">
                             <span class="estadistica-icon">👶</span>
                             <div class="estadistica-info">
@@ -104,4 +112,5 @@ $problema->mostrarFondo("fondo-problema5");
 </div>
 
 <?php
+// Cerrar plantilla (enlace de vuelta y footer)
 $problema->mostrarCierre();

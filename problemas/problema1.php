@@ -1,5 +1,8 @@
 <?php
+// Carga la clase que calcula las estadísticas
 require_once("../clases/Problema1.php");
+
+// Crear instancia del problema con título y descripción
 $problema = new Problema1(
     "Problema #1: Estadísticas de 5 números",
     "Calcular la media, desviación estándar, mínimo y máximo de 5 números ingresados."
@@ -7,15 +10,18 @@ $problema = new Problema1(
 
 $resultado = [];
 
+// Si el formulario se envió por POST, convertir entradas a float y ejecutar cálculo
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $numeros = array_map('floatval', $_POST['numeros']);
     $resultado = $problema->ejecutar($numeros);
 }
 
+// Mostrar la cabecera / fondo del problema (HTML inicial)
 $problema->mostrarFondo("fondo-problema1");
 ?>
 
 <div class="contenedor-problema">
+    <!-- Formulario para ingresar 5 números -->
     <form method="POST" class="form-problema estadistica-form">
         <div class="form-group">
             <label class="form-label">Ingrese 5 números positivos:</label>
@@ -34,11 +40,13 @@ $problema->mostrarFondo("fondo-problema1");
 
     <?php if (!empty($resultado)): ?>
         <?php if (isset($resultado['error'])): ?>
+            <!-- Mostrar mensaje de error si la lógica devolvió 'error' -->
             <div class="mensaje-error">
                 <i class="error-icon">⚠️</i>
                 <?= htmlspecialchars($resultado['error']) ?>
             </div>
         <?php else: ?>
+            <!-- Mostrar resultados estadísticos calculados -->
             <div class="resultados-estadisticos">
                 <h3 class="resultados-title">📊 Resultados Estadísticos</h3>
                 
@@ -77,6 +85,7 @@ $problema->mostrarFondo("fondo-problema1");
                 </div>
                 
                 <?php if (isset($resultado['numeros']) && is_array($resultado['numeros'])): ?>
+                    <!-- Opcional: lista de números ingresados (si la clase la incluye en la respuesta) -->
                     <div class="numeros-lista">
                         <h4>Números ingresados:</h4>
                         <div class="numeros-chips">
@@ -92,4 +101,6 @@ $problema->mostrarFondo("fondo-problema1");
 </div>
 
 <?php
+// Imprimir cierre de la plantilla (enlace de vuelta y footer)
 $problema->mostrarCierre();
+?>

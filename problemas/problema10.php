@@ -1,4 +1,5 @@
 <?php
+// Cargar la clase que procesa las ventas y crea la instancia con título/descripcion
 require_once("../clases/Problema10.php");
 
 $problema = new Problema10(
@@ -8,29 +9,31 @@ $problema = new Problema10(
 
 $resultado = [];
 
+// Procesar formulario al enviarse (POST)
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Validar token CSRF (simulado)
+    // Validación básica anti-CSRF (simulada aquí)
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== 'token_seguro') {
         $resultado = ['error' => "Error de seguridad. Intente nuevamente."];
     } else {
-        // Recoger y validar datos de vendedores
+        // Recoger y sanitizar nombres de vendedores (4)
         $vendedores = [];
         for ($i = 0; $i < 4; $i++) {
             $vendedores[$i] = Problema10::sanitizarTexto($_POST["vendedor_{$i}"]);
         }
 
-        // Recoger y validar datos de productos
+        // Recoger y sanitizar nombres de productos (5)
         $productos = [];
         for ($i = 0; $i < 5; $i++) {
             $productos[$i] = Problema10::sanitizarTexto($_POST["producto_{$i}"]);
         }
 
-        // Recoger y validar datos de ventas
+        // Recoger y validar matriz de ventas (5 productos x 4 vendedores)
         $ventas = [];
         $errores = [];
         for ($i = 0; $i < 5; $i++) {
             for ($j = 0; $j < 4; $j++) {
                 $clave = "venta_{$i}_{$j}";
+                // sanitizarValorVenta intenta convertir el input a float >= 0, o retorna false
                 $valor = Problema10::sanitizarValorVenta($_POST[$clave] ?? '0');
                 
                 if ($valor === false) {
@@ -41,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
 
+        // Si hubo errores en los valores, preparar mensaje; si no, ejecutar cálculo
         if (!empty($errores)) {
             $resultado = ['error' => implode("<br>", $errores)];
         } else {
@@ -49,12 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
+// Mostrar la cabecera / fondo del problema
 $problema->mostrarFondo("fondo-problema10");
 ?>
 
 <div class="contenedor-problema">
     <?php if (empty($resultado) || isset($resultado['error'])): ?>
-        <!-- Mostrar formulario solo si no hay resultados o hay error -->
+        <!-- Mostrar formulario para ingresar vendedores, productos y ventas -->
         <form method="POST" class="form-problema ventas-form">
             <input type="hidden" name="csrf_token" value="token_seguro">
 
@@ -64,6 +69,7 @@ $problema->mostrarFondo("fondo-problema10");
                     <?php for ($i = 0; $i < 4; $i++): ?>
                         <div class="input-group">
                             <label class="input-label">Vendedor <?= $i + 1 ?></label>
+                            <!-- Mantener valor previo en caso de error para mejor UX -->
                             <input type="text" name="vendedor_<?= $i ?>" 
                                    value="<?= isset($_POST["vendedor_$i"]) ? htmlspecialchars($_POST["vendedor_$i"]) : '' ?>" 
                                    required class="form-input" placeholder="Nombre del vendedor">
@@ -120,6 +126,7 @@ $problema->mostrarFondo("fondo-problema10");
                                     </td>
                                     <?php for ($j = 0; $j < 4; $j++): ?>
                                         <td class="td-venta">
+                                            <!-- Inputs numéricos con valor previo para corregir errores -->
                                             <input type="number" name="venta_<?= $i ?>_<?= $j ?>" 
                                                    step="0.01" min="0" 
                                                    value="<?= isset($_POST["venta_{$i}_{$j}"]) ? htmlspecialchars($_POST["venta_{$i}_{$j}"]) : '0' ?>" 
@@ -141,12 +148,13 @@ $problema->mostrarFondo("fondo-problema10");
 
     <?php if (!empty($resultado)): ?>
         <?php if (isset($resultado['error'])): ?>
+            <!-- Mensaje de error mostrado al usuario -->
             <div class="mensaje-error">
                 <i class="error-icon">⚠️</i>
                 <?= $resultado['error'] ?>
             </div>
         <?php else: ?>
-            <!-- Mostrar solo resultados cuando hay datos exitosos -->
+            <!-- Mostrar resultados: tabla con ventas y totales calculados -->
             <div class="resultado-ventas">
                 <h3 class="resultado-titulo">📈 Resumen de Ventas del Mes</h3>
                 
@@ -194,7 +202,7 @@ $problema->mostrarFondo("fondo-problema10");
                     </div>
                 </div>
 
-                <!-- Botón para volver a llenar el formulario -->
+                <!-- Botón para volver a llenar el formulario (GET limpia el POST) -->
                 <div class="form-actions">
                     <form method="GET" style="display: inline;">
                         <button type="submit" class="boton-problema volver-btn">
@@ -208,4 +216,6 @@ $problema->mostrarFondo("fondo-problema10");
 </div>
 
 <?php
+// Cerrar la plantilla (enlace de vuelta y footer)
 $problema->mostrarCierre();
+?>
